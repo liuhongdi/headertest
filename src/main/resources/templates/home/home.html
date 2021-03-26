@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试发送header</title>
+</head>
+<body>
+<div>
+    <input type="button" id="btnSave" onclick="go_send()"  value="发送header信息" />
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+<script>
+      //发送验证码:
+      function go_send() {
+          //var mobile=$("#mobile").val();
+          $.ajax({
+              cache: true,
+              type: "GET",
+              url: "/home/send",
+              //contentType: "application/json;charset=UTF-8",
+              //data:JSON.stringify(postData),
+              //dataType: "json",
+              dataType: "text",
+              async: true,
+              beforeSend: function(request) {
+                  request.setRequestHeader("h1","h1aa");
+                  request.setRequestHeader("h2","h2bb");
+                  request.setRequestHeader("h3","h3cc");
+              },
+              error: function (request) {
+                  console.log("Connection error");
+              },
+              success: function (data) {
+                  //save token
+                  console.log("data:");
+                  console.log(data);
+                  alert(data);
+              }
+          });
+      }
+</script>
+</body>
+</html>

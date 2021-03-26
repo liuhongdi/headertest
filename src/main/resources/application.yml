@@ -1,0 +1,10 @@
+#error
+server:
+  error:
+    include-stacktrace: always
+#errorlog
+logging:
+  level:
+    org:
+      springframework:
+        web: trace
